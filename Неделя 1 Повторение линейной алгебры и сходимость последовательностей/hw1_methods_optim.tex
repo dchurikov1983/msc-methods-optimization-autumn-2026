@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+% Настройка шрифтов и поддержки русского языка
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% Важно: объявляем оператор \rank, так как стандартной команды для него в LaTeX нет
+\usepackage{amsmath}
+\DeclareMathOperator{\rank}{rank} 
+
+\title{Home work 1}
+\author{Dmitri Churikov}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\section{Задание}
+
+Определи ранг произведения DA и обоснуй вывод.
+\\
+
+Решение:
+Согласно Теореме о ранге (документ Неделя 1 Методы оптимизации Лекция.pdf) 
+\\
+\rank(AB) \le \min\{\rank(A), \rank(B)\}
+
+Если матрица  D невырождена ((\(\det A \neq 0\))), ранг произведения равен r
+
+Если вырождена — ранг произведения уменьшается вплоть до нуля.
+
+
+\section{Задание}
+Дано:  \\
+$Ax = \lambda x$\\
+1) Найти: A + cI \\
+
+Решение:
+
+Умножим новую матрицу \(\mathbf{A} + c\mathbf{I}\) на тот же собственный вектор:
+
+Получим:
+ (A+cI)x=Ax+cIx
+ 
+ Так как \(\mathbf{I}\mathbf{x} = \mathbf{x}\) 
+
+ \[\mathbf{Ax}+c\mathbf{Ix}=\lambda \mathbf{x}+c\mathbf{x}\]
+
+Вынесем вектор x за скобки:\[\lambda \mathbf{x}+c\mathbf{x}=(\lambda +c)\mathbf{x}\] 
+
+Получим:
+A + cI = \lambda + c \\
+
+
+2) Найти A^k
+
+Решение:
+Умножим обе части равенства слева на матрицу A:
+
+\[\mathbf{A}(\mathbf{Ax})=\mathbf{A}(\lambda \mathbf{x})\]
+
+\[\mathbf{A}^{2}\mathbf{x}=\lambda (\mathbf{Ax})\]
+
+\[\mathbf{A}^{2}\mathbf{x}=\lambda (\lambda \mathbf{x})=\lambda ^{2}\mathbf{x}\]
+
+Повторяя эту операцию k раз, мы получаем:\[\mathbf{A}^{k}\mathbf{x}=\lambda ^{k}\mathbf{x}\]
+
+Ответ: A^k = \lambda ^{k}
+
+
+3)  \mathbf{A}^{-1} - ?
+
+Решение:
+Умножим обе части равенства слева на матрицу \mathbf{A}^{-1}:
+
+\[\mathbf{A}^{-1}(\mathbf{Ax})=\mathbf{A}^{-1}(\lambda \mathbf{x})\]
+
+В левой части получаем единичную матрицу: \(\mathbf{A}^{-1}\mathbf{A}\mathbf{x} = \mathbf{I}\mathbf{x} = \mathbf{x}\)
+
+В правой части выносим скаляр \lambda \вперед: \(\lambda (\mathbf{A}^{-1}\mathbf{x})\)
+
+\[\mathbf{x}=\lambda \mathbf{A}^{-1}\mathbf{x}\]
+
+Разделим обе части на \lambda : 
+
+\[\mathbf{A}^{-1}\mathbf{x}=\frac{1}{\lambda }\mathbf{x}\]
+
+Ответ:
+\mathbf{A}^{-1}  = \frac{1}{\lambda }
+
+\section{Задание}
+Задание 3.1: Вычисли сингулярное разложение SVD следующих матриц:
+
+Матрица \(A_1 = \begin{pmatrix} 2 \\ 2 \\ 8 \end{pmatrix}\)
+
+Матрица \Sigma (размер \(3 \times 1\)):
+
+Найдём норму вектора: \(\sqrt{2^2 + 2^2 + 8^2} = \sqrt{4 + 4 + 64} = \sqrt{72} = 6\sqrt{2}\).
+\[\Sigma =\left(\begin{matrix}6\sqrt{2}\\ 0\\ 0\end{matrix}\right)
+
+Матрица V^{T} (размер \(1 \times 1\)):Поскольку это скалярное пространство для правого вектора:\[V^{T}=\left(\begin{matrix}1\end{matrix}\right)\]
+
+Матрица U(размер \(3 \times 3\)):Первый столбец получается нормированием исходной матрицы A_{1}: \(\frac{1}{6\sqrt{2}} \begin{pmatrix} 2 \\ 2 \\ 8 \end{pmatrix} = \begin{pmatrix} \frac{\sqrt{2}}{6} \\ \frac{\sqrt{2}}{6} \\ \frac{2\sqrt{2}}{3} \end{pmatrix}\). Остальные два столбца дополняют матрицу до ортонормированного базиса.\[U=\left(\begin{matrix}\frac{\sqrt{2}}{6}&-\frac{\sqrt{2}}{2}&-\frac{2\sqrt{2}}{3}\\ \frac{\sqrt{2}}{6}&\frac{\sqrt{2}}{2}&-\frac{2\sqrt{2}}{3}\\ \frac{2\sqrt{2}}{3}&0&\frac{\sqrt{2}}{3}\end{matrix}\right)\approx \left(\begin{matrix}0.236&-0.707&-0.667\\ 0.236&0.707&-0.667\\ 0.943&0&0.333\end{matrix}\right)\]
+
+Задание 3.2 (дата рождения 01/10):
+
+Матрица \(A_2 = \begin{pmatrix} 0 & 11 \\ 11 & 0 \\ 0 & 0 \end{pmatrix}\)
+
+ \(A_2^T A_2 = \begin{pmatrix} 121 & 0 \\ 0 & 121 \end{pmatrix}\). \[\Sigma =\left(\begin{matrix}11&0\\ 0&11\\ 0&0\end{matrix}\right)\]
+
+Матрица V^{T}(размер \(2 \times 2\)):
+
+В качестве базиса можно выбрать стандартную единичную матрицу:\[V^{T}=\left(\begin{matrix}1&0\\ 0&1\end{matrix}\right)\]
+
+Матрица U (размер \(3 \times 3\)):\\
+
+Первые два столбца формируются как \(u_i = \frac{1}{\sigma_i} A_2 v_i\), а третий столбец ортогонален им:\[U=\left(\begin{matrix}0&1&0\\ 1&0&0\\ 0&0&1\end{matrix}\right)\]
+\end{document}
